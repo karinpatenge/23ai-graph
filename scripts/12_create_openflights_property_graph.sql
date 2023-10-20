@@ -14,7 +14,7 @@
 --
 -- Before executing the statement, change the connection parameters if needed
 
-sql sys@localhost:1521/freepdb1
+sql graphuser@localhost:1521/freepdb1
 
 -- Drop an existing property graph for the OPENFLIGHTS database tables
 drop property graph openflights_graph;

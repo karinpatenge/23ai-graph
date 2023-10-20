@@ -14,7 +14,7 @@
 --
 -- Before executing the statement, change the connection parameters if needed
 
-sql sys@localhost:1521/freepdb1
+sql graphuser@localhost:1521/freepdb1
 
 -- Create the tables for the OPENFLIGHTS data set
 create table if not exists openflights_airports (

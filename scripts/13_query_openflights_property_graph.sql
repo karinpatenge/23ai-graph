@@ -1,6 +1,5 @@
 ------------------------------------------------------------
 -- Sample SQL/PGQ queries for the OPENFLIGHTS property graph
-
 --
 -- Notes:
 --   The scripts refer to an Oracle Database 23c FREE,
@@ -15,7 +14,7 @@
 --
 -- Before executing the statement, change the connection parameters if needed
 
-sql sys@localhost:1521/freepdb1
+sql graphuser@localhost:1521/freepdb1
 
 -------------------------
 -- Sample SQL/PGQ queries

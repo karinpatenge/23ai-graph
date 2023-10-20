@@ -7,4 +7,3 @@ The data set has been curated and normalized by me. For the purpose of testing t
 * Airports
 * Cities
 * Routes (including the airline ICAO codes)
-

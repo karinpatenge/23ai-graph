@@ -1,5 +1,9 @@
 -------------------------------------------------
 -- Set up a database user in a Pluggable Database
+
+-- Notes:
+--   The scripts refer to an Oracle Database 23c FREE,
+--   which has one Pluggable Database (FREEPDB1).
 --
 -- Author: Karin Patenge
 -- Last updated: Oct 20, 2023

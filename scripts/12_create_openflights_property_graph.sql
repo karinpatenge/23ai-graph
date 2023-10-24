@@ -29,7 +29,7 @@ create property graph openflights_graph
 		openflights_cities as cities
 			key ( id )
 			label city
-			properties are all columns),
+			properties are all columns)
 	edge tables (
 		openflights_routes as routes
 			key (id)

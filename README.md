@@ -1,5 +1,9 @@
 # 23c-graph
 
+## Disclaimer
+
+This GitHub repository contains general information, scripts, and data samples used to highlight and demo Property Graph features of the Oracle Database version 23c. The owner assumes no responsibility or liability for any errors or omissions in the content of the repository. The information is provided on an "as is" basis reflecting my personal experiences but with no guarantees of completeness, accuracy, usefulness or timeliness. The content may also change over time as I learn and accumulate more knowledge.
+
 ## Tests with Oracle Database 23 and its SQL/PGQ support
 
 Effective with Oracle Database 23c, you can create and query SQL property graphs.

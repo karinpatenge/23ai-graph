@@ -138,8 +138,3 @@ SELECT * FROM GRAPH_TABLE(
         (c2 IS city WHERE c2.city = 'London' AND c2.country = 'United Kingdom')
   COLUMNS (a1.iata AS src_airport, r.airline_name AS airline, r.operator, a2.iata AS dst_airport)
 );
-
-
------------------------
--- Query using GraphViz
-------------------------

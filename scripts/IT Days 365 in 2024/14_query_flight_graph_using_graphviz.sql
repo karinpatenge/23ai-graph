@@ -2,7 +2,6 @@
 -- Query the FLIGHT_GRAPH using GraphViz
 ----------------------------------------
 
-
 SELECT id_a, id_e, id_b FROM GRAPH_TABLE(
   flight_graph
   MATCH (a)-[e]->(b)

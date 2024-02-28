@@ -1,7 +1,6 @@
 ---------------------------------
 -- Query the FLIGHT_GRAPH in APEX
 ---------------------------------
-
 SELECT cust_sqlgraph_json('
   SELECT * FROM GRAPH_TABLE(
     flight_ext_graph
@@ -18,4 +17,7 @@ SELECT cust_sqlgraph_json('
       VERTEX_ID(c2) AS dst_city
     )
   )
-'),:page_start,:page_size) AS result FROM DUAL;
+',
+:page_start,
+:page_size
+) AS result FROM DUAL

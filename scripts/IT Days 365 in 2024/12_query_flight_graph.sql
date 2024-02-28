@@ -50,8 +50,19 @@ SELECT COUNT(DISTINCT(iata)) AS no_of_reachable_airports FROM GRAPH_TABLE(
 );
 
 ----------------------------------------------------------------------------------
--- Extension: How many cities (instead of airports) can be reached with 1 stopover
+-- How many cities (instead of airports) can be reached with 1 stopover
 ----------------------------------------------------------------------------------
+
+SELECT COUNT(DISTINCT(city)) AS no_of_reachable_cities FROM GRAPH_TABLE(
+  flight_graph
+  MATCH (a IS airport WHERE a.iata='HAM') -[r IS route]->{2} (d IS airport) -> (c IS city)
+  WHERE a.iata <> d.iata
+  COLUMNS (c.city)
+);
+
+-------------------------------------------------------------------------------------
+-- How many cities (instead of airports) can be reached with a maximum of 3 stopovers
+-------------------------------------------------------------------------------------
 
 SELECT COUNT(DISTINCT(city)) AS no_of_reachable_cities FROM GRAPH_TABLE(
   flight_graph
@@ -65,10 +76,10 @@ SELECT COUNT(DISTINCT(city)) AS no_of_reachable_cities FROM GRAPH_TABLE(
 -- with up to three stopovers, ie. up to 4 flight segments?
 -----------------------------------------------------------
 
-SELECT COUNT(*) FROM GRAPH_TABLE(
+SELECT COUNT(DISTINCT(city)) AS no_of_reachable_cities FROM GRAPH_TABLE(
   flight_graph
-  MATCH (a IS airport WHERE a.iata='HAM') -[r IS route]->{1,4} (d IS airport WHERE d.iata='BUC')
-  COLUMNS (d.iata)
+  MATCH (a IS airport WHERE a.iata='HAM') -[r IS route]->{1,4} (d IS airport WHERE d.iata='BUC') -> (c IS city)
+  COLUMNS (c.city)
 );
 
 -----------------------------------------------------------
@@ -76,10 +87,11 @@ SELECT COUNT(*) FROM GRAPH_TABLE(
 -- with up to four stopovers, ie. up to 5 flight segments?
 -----------------------------------------------------------
 
-SELECT COUNT(*) FROM GRAPH_TABLE(
+SELECT COUNT(DISTINCT(city)) AS no_of_reachable_cities FROM GRAPH_TABLE(
   flight_graph
-  MATCH (a IS airport WHERE a.iata='HAM') -[r IS route]->{1,5} (d IS airport WHERE d.iata='BUC')
-  COLUMNS (d.iata)
+  MATCH (a IS airport WHERE a.iata='HAM') -[r IS route]->{1,5} (d IS airport WHERE d.iata='BUC') -> (c IS city)
+  WHERE a.iata <> d.iata
+  COLUMNS (c.city)
 );
 
 ------------------------------------------------------------------------

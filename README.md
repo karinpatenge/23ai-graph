@@ -1,4 +1,4 @@
-# 23c-graph
+# 23ai-graph
 
 ## Disclaimer
 

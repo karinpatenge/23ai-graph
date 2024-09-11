@@ -1,0 +1,80 @@
+create property graph scm_graph
+   vertex tables (
+      scm_product_types
+         key ( id )
+         label product_type properties ( id, product_type ),
+      scm_suppliers
+         key ( id )
+         label supplier
+         properties ( id, supplier_name ),
+      scm_customer_demographics
+         key ( id )
+         label customer_demographic
+         properties ( customer_demographics, id ),
+      scm_routes
+         key ( id )
+         label route
+         properties ( id, routes ),
+      scm_data
+         key ( id )
+         label supply_chain
+         properties ( availability, costs, customer_demographic_id, defect_rates, id, inspection_result_id, lead_time, lead_times, location_id, manufacturing_costs, manufacturing_lead_time, number_of_products_sold, order_quantities, price, production_volumes, product_type_id, revenue_generated, route_id, shipping_carrier_id, shipping_costs, shipping_times, sku, stock_levels, supplier_name_id, transportation_mode_id ),
+      scm_transportation_modes
+         key ( id )
+         label transportation_mode
+         properties ( id, transportation_modes ),
+      scm_locations
+         key ( id )
+         label location
+         properties ( id, location ),
+      scm_shipping_carriers
+         key ( id )
+         label shipping_carrier
+         properties ( id, shipping_carriers ),
+      scm_inspection_results
+         key ( id )
+         label inspection_result
+         properties ( id, inspection_results )
+   )
+   edge tables (
+      scm_data as scm_data_scm_transportation_modes key ( id )
+         source key ( id ) references scm_data( id )
+         destination key ( transportation_mode_id ) references scm_transportation_modes( id )
+         label transported_via
+         no properties,
+      scm_data as scm_data_scm_inspection_results key ( id )
+         source key ( id ) references scm_data( id )
+         destination key ( inspection_result_id ) references scm_inspection_results( id )
+         label inspected_as
+         no properties,
+      scm_data as scm_data_scm_customer_demographics key ( id )
+         source key ( id ) references scm_data( id )
+         destination key ( customer_demographic_id ) references scm_customer_demographics( id )
+         label identified_as
+         no properties,
+      scm_data as scm_data_scm_product_types key ( id )
+         source key ( id ) references scm_data( id )
+         destination key ( product_type_id ) references scm_product_types( id )
+         label is_of_type
+         no properties,
+      scm_data as scm_data_scm_routes key ( id )
+         source key ( id ) references scm_data( id )
+         destination key ( route_id ) references scm_routes( id )
+         label routed_via
+         no properties,
+      scm_data as scm_data_scm_suppliers key ( id )
+         source key ( id ) references scm_data( id )
+         destination key ( supplier_name_id ) references scm_suppliers( id )
+         label supplied_by
+         no properties,
+      scm_data as scm_data_scm_shipping_carriers key ( id )
+         source key ( id ) references scm_data( id )
+         destination key ( shipping_carrier_id ) references scm_shipping_carriers( id )
+         label shipped_by
+         no properties,
+      scm_data as scm_data_scm_locations key ( id )
+         source key ( id ) references scm_data( id )
+         destination key ( location_id ) references scm_locations( id )
+         label located_in
+         no properties
+) options( pg_pgql )

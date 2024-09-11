@@ -2,11 +2,11 @@
 -- Create tables and load the OPENFLIGHTS data set
 --
 -- Notes:
---   The scripts refer to an Oracle Database 23c FREE,
+--   The scripts refer to an Oracle Database 23ai FREE,
 --   which has one Pluggable Database (FREEPDB1).
 --
 -- Author: Karin Patenge
--- Last updated: Oct 20, 2023
+-- Last updated: Sep, 2024
 --------------------------------------------------------
 
 -- Connect to your Pluggable Database using SQLcl:
